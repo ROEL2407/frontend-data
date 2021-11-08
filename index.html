@@ -5,10 +5,62 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API to diagram</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <img width="100%" height="100%" src="svgs/bar.svg" alt="">
-    <img width="100%" height="100%" src="svgs/bars.svg" alt="">
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="starterStats" width="420" height="150" aria-labelledby="title" role="img">
+        <g class="bar">
+            <rect class="squirtle" width="20px" y="20" x="0"></rect>
+            <text x="0" y="15">Bulbasaur</text>
+            <rect  width="20px" y="20" x="20"></rect>
+            <text x="20" y="15">Ivysaur</text>
+            <rect  width="20px" y="20" x="40"></rect>
+            <text x="40" y="15">Venusaur</text>
+        </g>
+        <g class="bar">
+            <rect  width="20px" y="40" x="0"></rect>
+            <text x="0" y="45">Charmander</text>
+            <rect  width="20px" y="40" x="20"></rect>
+            <text x="20" y="45">Charmeleon</text>
+            <rect  width="20px" y="40" x="40"></rect>
+            <text x="40" y="45">Charizard</text>
+        </g>
+        <g class="bar">
+            <rect  width="20px" y="80" x="0"></rect>
+            <text x="0" y="75">Squirtle</text>
+            <rect  width="20px" y="80" x="20"></rect>
+            <text x="20" y="75">Wartortle</text>
+            <rect  width="20px" y="80" x="40"></rect>
+            <text x="40" y="75">Blastoise</text>
+        </g>
+    </svg>
+
+    <figure>
+        <figcaption>Total stats of the gen 1 starter Pokémon</figcaption>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="chart" width="420" height="150" aria-labelledby="title" role="img">
+        <title id="title">A bart chart showing information</title>
+        <g class="bar">
+          <rect width="40" height="19"></rect>
+          <text x="45" y="9.5" dy=".35em">4 apples</text>
+        </g>
+        <g class="bar">
+          <rect width="80" height="19" y="20"></rect>
+          <text x="85" y="28" dy=".35em">8 bananas</text>
+        </g>
+        <g class="bar">
+          <rect width="150" height="19" y="40"></rect>
+          <text x="150" y="48" dy=".35em">15 kiwis</text>
+        </g>
+        <g class="bar">
+          <rect width="160" height="19" y="60"></rect>
+          <text x="161" y="68" dy=".35em">16 oranges</text>
+        </g>
+        <g class="bar">
+          <rect width="230" height="19" y="80"></rect>
+          <text x="235" y="88" dy=".35em">23 lemons</text>
+        </g>
+      </svg>
+      </figure>
     <script src="./index.js"></script>
 </body>
 </html>
