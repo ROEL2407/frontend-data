@@ -32,8 +32,8 @@ function getPokemonData(data) {
     });
 }
 
+let starterMons = [];
 function countStats(pokemonArray) {
-    let starterMons = [];
     pokemonArray.forEach(e => {
         // For every pokemon/object in the array
         const stats = e.stats;  
