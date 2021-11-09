@@ -8,7 +8,7 @@ function starters() {
 function getPokemonData(data) {
     let urls = [];
     let promises = [];
-    let pokemons = [];
+    let pokemonArray = [];
 
     data.results.forEach(result => {
         // Push all urls into array urls
@@ -21,20 +21,20 @@ function getPokemonData(data) {
     }
     // Resolve all promises
     Promise.all(promises).then(results => {
-        // For each pokemon in results push the pokemon to the array pokemons
+        // For each pokemon in results push the pokemon to the array pokemonArray
         results.forEach(pokemon => {
-            pokemons.push({
+            pokemonArray.push({
                 naam: pokemon.name,
                 stats: pokemon.stats
             });
         });
-        CountStats(pokemons);
+        countStats(pokemonArray);
     });
 }
 
-function CountStats(pokemons) {
+function countStats(pokemonArray) {
     let starterMons = [];
-    pokemons.forEach(e => {
+    pokemonArray.forEach(e => {
         // For every pokemon/object in the array
         const stats = e.stats;  
         let valueHolder = [];
