@@ -1,3 +1,7 @@
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .bar {
     height: 21px;
     transition: fill .3s ease;
@@ -6,43 +10,49 @@
     padding-top: 20px;
 }
 
-.bar rect {
-    height: 21px;
+#diagram {
+    border-left: 1px solid black;
 }
 
-.bar text {
-    max-width: 20px;
+#legenda #legendaTitel {
+    font-weight: bold;
+}
+
+#diagram rect, #legenda rect {
+    height: 20px;
+    width: 20px;
 }
 
 /* grass starters colors */
-.starterStats .bar:first-of-type rect:first-of-type {
+#diagram .bar:first-of-type rect:first-of-type, #legenda g:first-of-type rect:first-of-type {
     fill:greenyellow;
 }
-.starterStats .bar:first-of-type rect:nth-of-type(2) {
+#diagram .bar:first-of-type rect:nth-of-type(2), #legenda g:first-of-type rect:nth-of-type(2) {
     fill:lawngreen;
 }
-.starterStats .bar:first-of-type rect:last-of-type {
+#diagram .bar:first-of-type rect:last-of-type, #legenda g:first-of-type rect:last-of-type {
     fill:green;
 }
 
+/* fire starters colors */
+.starterStats .bar:nth-of-type(2) rect:first-of-type, #legenda g:nth-of-type(2) rect:first-of-type {
+    fill:orange;
+}
+.starterStats .bar:nth-of-type(2) rect:nth-of-type(2), #legenda g:nth-of-type(2) rect:nth-of-type(2) {
+    fill:orangered;
+}
+.starterStats .bar:nth-of-type(2) rect:last-of-type, #legenda g:nth-of-type(2) rect:last-of-type {
+    fill:red;
+}
+
 /* water startes colors */
-.starterStats .bar:last-of-type rect:first-of-type {
+#diagram .bar:last-of-type rect:first-of-type, #legenda g:last-of-type rect:first-of-type {
     fill:aqua;
 }
-.starterStats .bar:last-of-type rect:nth-of-type(2) {
+#diagram .bar:last-of-type rect:nth-of-type(2), #legenda g:last-of-type rect:nth-of-type(2) {
     fill:cornflowerblue;
 }
-.starterStats .bar:last-of-type rect:last-of-type {
+#diagram .bar:last-of-type rect:last-of-type, #legenda g:last-of-type rect:last-of-type {
     fill:blue;
 }
 
-/* fire starters colors */
-.starterStats .bar:nth-of-type(2) rect:first-of-type {
-    fill:orange;
-}
-.starterStats .bar:nth-of-type(2) rect:nth-of-type(2) {
-    fill:orangered;
-}
-.starterStats .bar:nth-of-type(2) rect:last-of-type {
-    fill:red;
-}
