@@ -48,9 +48,9 @@ function countStats(pokemonArray) {
         });
         // Push the name, stats and the total of the stats into a new array
         starterMons.push({
-            Naam: e.naam,
+            naam: e.naam,
             stats: e.stats,
-            Totaal: totalValueHolder
+            totaal: totalValueHolder
         });
     });
     console.table(starterMons);
