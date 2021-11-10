@@ -65,7 +65,7 @@ function d3Chart(starterMons) {
             .attr("height", yscale.bandwidth())
             .attr("width", (d) => xscale(d.totaal))
             .attr("y", (d) => yscale(d.naam))
-            .attr("id", (d) => d.naam);
+            .attr("class", (d) => d.type);
     
         rect.select("title").text((d) => d.naam);
     }
@@ -79,6 +79,38 @@ function d3Chart(starterMons) {
     
             // Keep only data element which is the first evolution 
             const filtered_data = data.filter((d) => d.evo === 1);
+    
+            update(filtered_data); // Update the chart with the filtered data
+        } else {
+            // Checkbox was just unchecked
+            update(data); // Update the chart with all the data we have
+        }
+    });
+    
+    d3.select("#filter-2nd-only").on("change", function () {
+        // This will be triggered when the user selects or unselects the checkbox
+        const checked = d3.select(this).property("checked");
+        if (checked === true) {
+            // Checkbox was just checked
+    
+            // Keep only data element which is the first evolution 
+            const filtered_data = data.filter((d) => d.evo === 2);
+    
+            update(filtered_data); // Update the chart with the filtered data
+        } else {
+            // Checkbox was just unchecked
+            update(data); // Update the chart with all the data we have
+        }
+    });
+    
+    d3.select("#filter-3rd-only").on("change", function () {
+        // This will be triggered when the user selects or unselects the checkbox
+        const checked = d3.select(this).property("checked");
+        if (checked === true) {
+            // Checkbox was just checked
+    
+            // Keep only data element which is the first evolution 
+            const filtered_data = data.filter((d) => d.evo === 3);
     
             update(filtered_data); // Update the chart with the filtered data
         } else {
