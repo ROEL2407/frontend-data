@@ -25,7 +25,8 @@ function getPokemonData(data) {
         results.forEach(pokemon => {
             pokemonArray.push({
                 naam: pokemon.name,
-                stats: pokemon.stats
+                stats: pokemon.stats,
+                type: pokemon.types[0]
             });
         });
         countStats(pokemonArray);
@@ -49,6 +50,7 @@ function countStats(pokemonArray) {
         });
         // nasty if else statement to give thenumber of which evolution the starter is
         // could've made this with an switch case in another function
+        // could also have fetched the evolution chains but in my opinion that isn't important for a few pokemon
         if (e.naam === "bulbasaur" || e.naam === "charmander" || e.naam === "squirtle") {
             evo = 1;
         }
@@ -61,6 +63,7 @@ function countStats(pokemonArray) {
         // Push the name, stats and the total of the stats into a new array
         starterMons.push({
             naam: e.naam,
+            type: e.type,
             stats: e.stats,
             totaal: totalValueHolder,
             evo: evo
