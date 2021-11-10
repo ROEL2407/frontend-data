@@ -64,7 +64,8 @@ function d3Chart(starterMons) {
         rect.transition()
             .attr("height", yscale.bandwidth())
             .attr("width", (d) => xscale(d.totaal))
-            .attr("y", (d) => yscale(d.naam));
+            .attr("y", (d) => yscale(d.naam))
+            .attr("id", (d) => d.naam);
     
         rect.select("title").text((d) => d.naam);
     }
@@ -76,8 +77,8 @@ function d3Chart(starterMons) {
         if (checked === true) {
             // Checkbox was just checked
     
-            // Keep only data element whose country is US
-            const filtered_data = data.filter((d) => d.evo === "1");
+            // Keep only data element which is the first evolution 
+            const filtered_data = data.filter((d) => d.evo === 1);
     
             update(filtered_data); // Update the chart with the filtered data
         } else {
