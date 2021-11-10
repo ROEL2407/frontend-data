@@ -2,57 +2,53 @@ body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.bar {
+/* .bar {
     height: 21px;
     transition: fill .3s ease;
     cursor: pointer;
     font-family: Helvetica, sans-serif;
     padding-top: 20px;
-}
+} */
 
-#diagram {
-    border-left: 1px solid black;
-}
 
 #legenda #legendaTitel {
     font-weight: bold;
 }
 
-#diagram rect, #legenda rect {
-    height: 20px;
-    width: 20px;
+#diagram rect {
+    border-left: 1px solid black;
 }
 
 /* grass starters colors */
-#diagram .bar:first-of-type rect:first-of-type, #legenda g:first-of-type rect:first-of-type {
+#diagram rect:first-of-type, #legenda g:first-of-type rect:first-of-type {
     fill:greenyellow;
 }
-#diagram .bar:first-of-type rect:nth-of-type(2), #legenda g:first-of-type rect:nth-of-type(2) {
+#diagram rect:nth-of-type(2), #legenda g:first-of-type rect:nth-of-type(2) {
     fill:lawngreen;
 }
-#diagram .bar:first-of-type rect:last-of-type, #legenda g:first-of-type rect:last-of-type {
+#diagram rect:nth-of-type(3), #legenda g:first-of-type rect:last-of-type {
     fill:green;
 }
 
 /* fire starters colors */
-.starterStats .bar:nth-of-type(2) rect:first-of-type, #legenda g:nth-of-type(2) rect:first-of-type {
+.starterStats rect:nth-of-type(4), #legenda g:nth-of-type(2) rect:first-of-type {
     fill:orange;
 }
-.starterStats .bar:nth-of-type(2) rect:nth-of-type(2), #legenda g:nth-of-type(2) rect:nth-of-type(2) {
+.starterStats rect:nth-of-type(5), #legenda g:nth-of-type(2) rect:nth-of-type(2) {
     fill:orangered;
 }
-.starterStats .bar:nth-of-type(2) rect:last-of-type, #legenda g:nth-of-type(2) rect:last-of-type {
+.starterStats rect:nth-of-type(6), #legenda g:nth-of-type(2) rect:last-of-type {
     fill:red;
 }
 
 /* water startes colors */
-#diagram .bar:last-of-type rect:first-of-type, #legenda g:last-of-type rect:first-of-type {
+#diagram rect:nth-of-type(7), #legenda g:last-of-type rect:first-of-type {
     fill:aqua;
 }
-#diagram .bar:last-of-type rect:nth-of-type(2), #legenda g:last-of-type rect:nth-of-type(2) {
+#diagram rect:nth-of-type(8), #legenda g:last-of-type rect:nth-of-type(2) {
     fill:cornflowerblue;
 }
-#diagram .bar:last-of-type rect:last-of-type, #legenda g:last-of-type rect:last-of-type {
+#diagram rect:last-of-type, #legenda g:last-of-type rect:last-of-type {
     fill:blue;
 }
 
