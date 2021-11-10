@@ -20,35 +20,35 @@ body{
 }
 
 /* grass starters colors */
-#diagram rect:first-of-type, #legenda g:first-of-type rect:first-of-type {
+#bulbasaur, #legenda g:first-of-type rect:first-of-type {
     fill:greenyellow;
 }
-#diagram rect:nth-of-type(2), #legenda g:first-of-type rect:nth-of-type(2) {
+#ivysaur, #legenda g:first-of-type rect:nth-of-type(2) {
     fill:lawngreen;
 }
-#diagram rect:nth-of-type(3), #legenda g:first-of-type rect:last-of-type {
+#venusaur, #legenda g:first-of-type rect:last-of-type {
     fill:green;
 }
 
 /* fire starters colors */
-.starterStats rect:nth-of-type(4), #legenda g:nth-of-type(2) rect:first-of-type {
+#charmander, #legenda g:nth-of-type(2) rect:first-of-type {
     fill:orange;
 }
-.starterStats rect:nth-of-type(5), #legenda g:nth-of-type(2) rect:nth-of-type(2) {
+#charmeleon, #legenda g:nth-of-type(2) rect:nth-of-type(2) {
     fill:orangered;
 }
-.starterStats rect:nth-of-type(6), #legenda g:nth-of-type(2) rect:last-of-type {
+#charizard, #legenda g:nth-of-type(2) rect:last-of-type {
     fill:red;
 }
 
 /* water startes colors */
-#diagram rect:nth-of-type(7), #legenda g:last-of-type rect:first-of-type {
+#squirtle, #legenda g:last-of-type rect:first-of-type {
     fill:aqua;
 }
-#diagram rect:nth-of-type(8), #legenda g:last-of-type rect:nth-of-type(2) {
+#wartortle, #legenda g:last-of-type rect:nth-of-type(2) {
     fill:cornflowerblue;
 }
-#diagram rect:last-of-type, #legenda g:last-of-type rect:last-of-type {
+#blastoise, #legenda g:last-of-type rect:last-of-type {
     fill:blue;
 }
 
