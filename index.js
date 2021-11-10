@@ -32,8 +32,8 @@ function getPokemonData(data) {
     });
 }
 
-let starterMons = [];
 function countStats(pokemonArray) {
+    let starterMons = [];
     pokemonArray.forEach(e => {
         // For every pokemon/object in the array
         const stats = e.stats;  
@@ -47,6 +47,8 @@ function countStats(pokemonArray) {
             valueHolder.push(total.base_stat);  
             totalValueHolder = valueHolder.reduce(reducer);
         });
+        // nasty if else statement to give thenumber of which evolution the starter is
+        // could've made this with an switch case in another function
         if (e.naam === "bulbasaur" || e.naam === "charmander" || e.naam === "squirtle") {
             evo = 1;
         }
@@ -65,12 +67,12 @@ function countStats(pokemonArray) {
         });
     });
     console.table(starterMons);
+    d3Chart(starterMons);
 }
-
 function getPokemon(url) {
     // return every fetch
     return fetch(url)
         .then(response => response.json())
-        .then(data => data);
+        .then(data => data)
 }
 starters();
