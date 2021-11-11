@@ -26,7 +26,7 @@ function getPokemonData(data) {
             pokemonArray.push({
                 naam: pokemon.name,
                 stats: pokemon.stats,
-                type: pokemon.types[0]
+                type: pokemon.types[0].type.name
             });
         });
         countStats(pokemonArray);
