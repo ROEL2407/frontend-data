@@ -69,7 +69,6 @@ function countStats(pokemonArray) {
             evo: evo
         });
     });
-    console.table(starterMons);
     d3Chart(starterMons);
 }
 function getPokemon(url) {
