@@ -80,7 +80,7 @@ function d3Chart(starterMons) {
 
 
     //interactivity
-    d3.select("#filter-1st-only").on("change", function () {
+    d3.select("#filter-1-only").on("change", function () {
         // This will be triggered when the user selects or unselects the checkbox
         const checked = d3.select(this).property("checked");
         if (checked === true) {
@@ -96,7 +96,7 @@ function d3Chart(starterMons) {
         }
     });
 
-    d3.select("#filter-2nd-only").on("change", function () {
+    d3.select("#filter-2-only").on("change", function () {
         // This will be triggered when the user selects or unselects the checkbox
         const checked = d3.select(this).property("checked");
         if (checked === true) {
@@ -112,7 +112,7 @@ function d3Chart(starterMons) {
         }
     });
 
-    d3.select("#filter-3rd-only").on("change", function () {
+    d3.select("#filter-3-only").on("change", function () {
         // This will be triggered when the user selects or unselects the checkbox
         const checked = d3.select(this).property("checked");
         if (checked === true) {
