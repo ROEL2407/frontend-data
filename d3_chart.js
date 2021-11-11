@@ -32,9 +32,9 @@ function d3Chart(starterMons) {
     const g_yaxis = g.append("g").attr("class", "y axis");
 
     //color scale items of types
-    let grass = d3.scaleLinear().domain([1, 10]).range(["white", "green"]);
-    let fire = d3.scaleLinear().domain([1, 10]).range(["white", "red"]);
-    let water = d3.scaleLinear().domain([1, 10]).range(["white", "blue"]);
+    let grass = d3.scaleLinear().domain([1, 3]).range(["lightgreen", "darkgreen"]);
+    let fire = d3.scaleLinear().domain([1, 3]).range(["red", "darkred"]);
+    let water = d3.scaleLinear().domain([1, 3]).range(["lightblue", "darkblue"]);
 
     ///////////////////////
     update(data);
