@@ -31,6 +31,11 @@ function d3Chart(starterMons) {
     const yaxis = d3.axisLeft().scale(yscale);
     const g_yaxis = g.append("g").attr("class", "y axis");
 
+    //color scale items of types
+    let grass = d3.scaleLinear().domain([1, 10]).range(["white", "green"]);
+    let fire = d3.scaleLinear().domain([1, 10]).range(["white", "red"]);
+    let water = d3.scaleLinear().domain([1, 10]).range(["white", "blue"]);
+
     ///////////////////////
     update(data);
     console.log(data);
@@ -65,26 +70,14 @@ function d3Chart(starterMons) {
             .attr("height", yscale.bandwidth())
             .attr("width", (d) => xscale(d.totaal))
             .attr("y", (d) => yscale(d.naam))
-            .attr("class", (d) => d.type);
+            .attr("class", (d) => d.type)
+            .style('fill', (d) => {
+                return d.type === 'grass' ? grass(d.evo) : d.type === 'fire' ? fire(d.evo) : water(d.evo)
+            });
 
         rect.select("title").text((d) => d.naam);
-
-        //color scale items of types
-        let grass = d3.scaleLinear().domain([1, 10]).range(["white", "green"]);
-        let fire = d3.scaleLinear().domain([1, 10]).range(["white", "red"]);
-        let water = d3.scaleLinear().domain([1, 10]).range(["white", "blue"]);
-
-        rect.selectAll(".grass").attr("fill", function (d) {
-            return grass(d);
-        });
-        rect.selectAll(".fire").attr("fill", function (d) {
-            return fire(d);
-        });
-        rect.selectAll(".water").attr("fill", function (d) {
-            return water(d);
-        });
-
     }
+
 
     //interactivity
     d3.select("#filter-1st-only").on("change", function () {
@@ -109,7 +102,7 @@ function d3Chart(starterMons) {
         if (checked === true) {
             // Checkbox was just checked
 
-            // Keep only data element which is the first evolution 
+            // Keep only data element which is the second evolution 
             const filtered_data = data.filter((d) => d.evo === 2);
 
             update(filtered_data); // Update the chart with the filtered data
@@ -125,7 +118,7 @@ function d3Chart(starterMons) {
         if (checked === true) {
             // Checkbox was just checked
 
-            // Keep only data element which is the first evolution 
+            // Keep only data element which is the third evolution 
             const filtered_data = data.filter((d) => d.evo === 3);
 
             update(filtered_data); // Update the chart with the filtered data
