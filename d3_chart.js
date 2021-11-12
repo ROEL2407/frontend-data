@@ -22,7 +22,7 @@ function d3Chart(starterMons) {
     let data = starterMons;
 
     // Scales setup
-    const xscale = d3.scaleLinear().range([0, width]);
+    const xscale = d3.scaleLinear().domain([d3.min(data), d3.max(data)]).range([0, width]);
     const yscale = d3.scaleBand().rangeRound([0, height]).paddingInner(0.1);
 
     // Axis setup
@@ -42,7 +42,7 @@ function d3Chart(starterMons) {
 
     function update(new_data) {
         //update the scales
-        xscale.domain([0, d3.max(new_data, (d) => d.totaal)]);
+        xscale.domain([300, d3.max(new_data, (d) => d.totaal)]);
         yscale.domain(new_data.map((d) => d.naam));
         //render the axis
         g_xaxis.transition().call(xaxis);
@@ -52,7 +52,7 @@ function d3Chart(starterMons) {
             // ENTER 
             // new elements
             (enter) => {
-                const rect_enter = enter.append("rect").attr("x", 0);
+                const rect_enter = enter.append("rect").attr("x", 1);
                 rect_enter.append("title");
                 return rect_enter;
             },
@@ -88,7 +88,7 @@ function d3Chart(starterMons) {
 
             // Keep only data element which is the first evolution 
             const filtered_data = data.filter((d) => d.evo === 1);
-
+           // d3.selectAll('input').property("checked", false)
             update(filtered_data); // Update the chart with the filtered data
         } else {
             // Checkbox was just unchecked
