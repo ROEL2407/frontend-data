@@ -19,36 +19,6 @@ body{
     border-left: 1px solid black;
 }
 
-/* grass starters colors */
-#bulbasaur, #legenda g:first-of-type rect:first-of-type {
-    fill:greenyellow;
+.axis text {
+    font-size: 13px;
 }
-#ivysaur, #legenda g:first-of-type rect:nth-of-type(2) {
-    fill:lawngreen;
-}
-#venusaur, #legenda g:first-of-type rect:last-of-type {
-    fill:green;
-}
-
-/* fire starters colors */
-#charmander, #legenda g:nth-of-type(2) rect:first-of-type {
-    fill:orange;
-}
-#charmeleon, #legenda g:nth-of-type(2) rect:nth-of-type(2) {
-    fill:orangered;
-}
-#charizard, #legenda g:nth-of-type(2) rect:last-of-type {
-    fill:red;
-}
-
-/* water startes colors */
-#squirtle, #legenda g:last-of-type rect:first-of-type {
-    fill:aqua;
-}
-#wartortle, #legenda g:last-of-type rect:nth-of-type(2) {
-    fill:cornflowerblue;
-}
-#blastoise, #legenda g:last-of-type rect:last-of-type {
-    fill:blue;
-}
-
