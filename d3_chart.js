@@ -81,49 +81,65 @@ function d3Chart(starterMons) {
 
     //interactivity
     d3.select("#filter-1-only").on("change", function () {
-        // This will be triggered when the user selects or unselects the checkbox
+        // This will be triggered when the user selects or unselects the radiobutton
         const checked = d3.select(this).property("checked");
         if (checked === true) {
-            // Checkbox was just checked
+            // radiobutton was just checked
 
             // Keep only data element which is the first evolution 
             const filtered_data = data.filter((d) => d.evo === 1);
            // d3.selectAll('input').property("checked", false)
             update(filtered_data); // Update the chart with the filtered data
         } else {
-            // Checkbox was just unchecked
+            // radiobutton was just unchecked
             update(data); // Update the chart with all the data we have
         }
     });
 
     d3.select("#filter-2-only").on("change", function () {
-        // This will be triggered when the user selects or unselects the checkbox
+        // This will be triggered when the user selects or unselects the radiobutton
         const checked = d3.select(this).property("checked");
         if (checked === true) {
-            // Checkbox was just checked
+            // radiobutton was just checked
 
             // Keep only data element which is the second evolution 
             const filtered_data = data.filter((d) => d.evo === 2);
 
             update(filtered_data); // Update the chart with the filtered data
         } else {
-            // Checkbox was just unchecked
+            // radiobutton was just unchecked
             update(data); // Update the chart with all the data we have
         }
     });
 
     d3.select("#filter-3-only").on("change", function () {
-        // This will be triggered when the user selects or unselects the checkbox
+        // This will be triggered when the user selects or unselects the radiobutton
         const checked = d3.select(this).property("checked");
         if (checked === true) {
-            // Checkbox was just checked
+            // radiobutton was just checked
 
             // Keep only data element which is the third evolution 
             const filtered_data = data.filter((d) => d.evo === 3);
 
             update(filtered_data); // Update the chart with the filtered data
         } else {
-            // Checkbox was just unchecked
+            // radiobutton was just unchecked
+            update(data); // Update the chart with all the data we have
+        }
+    });
+
+    d3.select("#filter-all").on("change", function () {
+        // This will be triggered when the user selects or unselects the radiobutton
+        const checked = d3.select(this).property("checked");
+        if (checked === true) {
+            // radiobutton was just checked
+
+            // Keep only data element which is the third evolution 
+            const filtered_data = data.filter((d) => d.evo);
+
+            update(filtered_data); // Update the chart with the filtered data
+        } else {
+            // radiobutton was just unchecked
             update(data); // Update the chart with all the data we have
         }
     });
