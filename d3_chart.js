@@ -40,7 +40,7 @@ function d3Chart(starterMons) {
     update(data);
     console.log(data);
 
-    function update(new_data) {
+    function update(new_data, Tooltip) {
         //update the scales
         xscale.domain([300, d3.max(new_data, (d) => d.totaal)]);
         yscale.domain(new_data.map((d) => d.naam));
@@ -49,20 +49,23 @@ function d3Chart(starterMons) {
         g_yaxis.transition().call(yaxis);
 
         const rect = g.selectAll("rect").data(new_data, (d) => d.totaal).join(
-            // ENTER 
-            // new elements
-            (enter) => {
-                const rect_enter = enter.append("rect").attr("x", 1);
-                rect_enter.append("title");
-                return rect_enter;
-            },
-            // UPDATE
-            // update existing elements
-            (update) => update,
-            // EXIT
-            // elements that aren't associated with data
-            (exit) => exit.remove()
-        );
+                // ENTER 
+                // new elements
+                (enter) => {
+                    const rect_enter = enter.append("rect").attr("x", 1);
+                    rect_enter.append("title");
+                    return rect_enter;
+                },
+                // UPDATE
+                // update existing elements
+                (update) => update,
+                // EXIT
+                // elements that aren't associated with data
+                (exit) => exit.remove()
+            )
+            .on('mouseover', onMouseOver)
+            .on('mousemove', onMouseOver) // Mousemove returnt constant de coördinaten van de muis
+            .on('mouseout', onMouseOut);
 
         // ENTER + UPDATE
         // both old and new elements
@@ -73,11 +76,8 @@ function d3Chart(starterMons) {
             .attr("class", (d) => d.type)
             .style('fill', (d) => {
                 return d.type === 'grass' ? grass(d.evo) : d.type === 'fire' ? fire(d.evo) : water(d.evo)
-            });
-
-        rect.select("title").text((d) => d.naam);
+            })
     }
-
 
     //interactivity
     d3.select("#filter-1-only").on("change", function () {
@@ -88,7 +88,7 @@ function d3Chart(starterMons) {
 
             // Keep only data element which is the first evolution 
             const filtered_data = data.filter((d) => d.evo === 1);
-           // d3.selectAll('input').property("checked", false)
+            // d3.selectAll('input').property("checked", false)
             update(filtered_data); // Update the chart with the filtered data
         } else {
             // radiobutton was just unchecked
@@ -143,4 +143,42 @@ function d3Chart(starterMons) {
             update(data); // Update the chart with all the data we have
         }
     });
+
+    function onMouseOver(d, data) {
+        // Gives the position of the mouse
+        const xPos = d.clientX;
+        const yPos = d.clientY;
+
+        // give tooltip display block if mouse is over a bar
+        d3.select(this).attr('class', 'block');
+        d3.select('#toolTip').classed('hidden', false);
+        d3.select('#toolTip')
+            // take position of mouse for position of tooltip
+            .style('left', xPos + 'px')
+            .style('top', yPos + 'px');
+        //give data to tooltip
+        d3.select('#type').text(`Type: ${data.type}`);
+        d3.select('#value').text(`Total base stats: ${data.totaal}`);
+    }
+
+    function onMouseOut() {
+        // remove display of tooltip when mouse isn't over a bar
+        d3.select('#toolTip').classed('hidden', true);
+    }
+
+    // function createTooltip() {
+    //     var Tooltip = d3
+    //       .select("rect")
+    //       .append("div")
+    //       .style("opacity", 0)
+    //       .attr("class", "tooltip")
+    //       .style("background-color", "white")
+    //       .style("border", "solid")
+    //       .style("border-width", "2px")
+    //       .style("border-radius", "5px")
+    //       .style("padding", "5px");
+
+    //     console.log(Tooltip);
+    //     return Tooltip;
+    //   }
 }

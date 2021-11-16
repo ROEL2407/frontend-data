@@ -10,18 +10,26 @@
 </head>
 
 <body>
-    
+
     <h2>What are the biggest base stats of the gen 1 starter Pokémon?</h2>
     <div id="filters">
         <strong>Filter:</strong>
-        <label><input type="radio" name="filters" value="1" id="filter-1-only" class="filters"/>First evolution</label>
-        <label><input type="radio" name="filters" value="1" id="filter-2-only" class="filters"/>Second evolution</label>
-        <label><input type="radio" name="filters" value="1" id="filter-3-only" class="filters"/>Third evolution</label>
-        <label><input type="radio" name="filters" value="1" id="filter-all" class="filters"/>All evolutions</label>
+        <label><input type="radio" name="filters" value="1" id="filter-1-only" class="filters" />First evolution</label>
+        <label><input type="radio" name="filters" value="1" id="filter-2-only" class="filters" />Second
+            evolution</label>
+        <label><input type="radio" name="filters" value="1" id="filter-3-only" class="filters" />Third evolution</label>
+        <label><input type="radio" name="filters" value="1" id="filter-all" class="filters" />All evolutions</label>
+    </div>
+    <div class="hidden" id="toolTip">
+        <p id="type"></p>
+        <p id="value"></p>
     </div>
     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
         class="starterStats" width="100%" height="250" aria-labelledby="title" role="img">
     </svg>
+    <div id="stackedBar">
+
+    </div>
     <script src="https://d3js.org/d3.v7.js" charset="utf-8"></script>
     <script src="./d3_chart.js"></script>
     <script src="./d3stacked.js"></script>

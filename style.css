@@ -22,3 +22,30 @@ body{
 .axis text {
     font-size: 13px;
 }
+
+.hidden {
+    display: none;
+}
+
+.block {
+    display: block;
+}
+
+#toolTip {
+	position: absolute;
+	width: auto;
+	height: auto;
+	padding: 10px;
+	font-weight: normal;
+	background-color: white;
+	-webkit-border-raadius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+	box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+	pointer-events: none;
+	align-items: center;
+	text-align: center;
+    border: 1px solid black;
+}
