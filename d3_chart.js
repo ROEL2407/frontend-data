@@ -165,20 +165,4 @@ function d3Chart(starterMons) {
         // remove display of tooltip when mouse isn't over a bar
         d3.select('#toolTip').classed('hidden', true);
     }
-
-    // function createTooltip() {
-    //     var Tooltip = d3
-    //       .select("rect")
-    //       .append("div")
-    //       .style("opacity", 0)
-    //       .attr("class", "tooltip")
-    //       .style("background-color", "white")
-    //       .style("border", "solid")
-    //       .style("border-width", "2px")
-    //       .style("border-radius", "5px")
-    //       .style("padding", "5px");
-
-    //     console.log(Tooltip);
-    //     return Tooltip;
-    //   }
 }
