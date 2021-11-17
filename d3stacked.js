@@ -1,77 +1,245 @@
-// main source: https://www.d3-graph-gallery.com/graph/barplot_stacked_basicWide.html
+// // main source: https://www.d3-graph-gallery.com/graph/barplot_stacked_basicWide.html
 
-// set the dimensions and margins of the graph
+// // set the dimensions and margins of the graph
+// function d3Stacked(starterMons) {
+//   const margin = {
+//       top: 10,
+//       right: 30,
+//       bottom: 20,
+//       left: 50
+//     },
+//     width = 460 - margin.left - margin.right,
+//     height = 400 - margin.top - margin.bottom;
+
+//   // append the svg object to the body of the page
+//   const svg = d3.select("#stackedBar")
+//     .attr("width", width + margin.left + margin.right)
+//     .attr("height", height + margin.top + margin.bottom);
+
+//   const g = svg.append("g")
+//     .attr("transform", `translate(${margin.left},${margin.top})`);
+
+//   // Parse the Data
+//   let dataStacked = starterMons;
+
+//   function stacked(dataStacked) {
+
+//     // List of subgroups = header of the csv files = soil condition here
+//     console.log(dataStacked)
+//     const subgroups = dataStacked.column.slice(1)
+
+//     // List of groups = species here = value of the first column called group -> I show them on the X axis
+//     const groups = dataStacked.map(d => (d.chain))
+
+//     // Add X axis
+//     const x = d3.scaleBand()
+//       .domain(groups)
+//       .range([0, width])
+//       .padding([0.2])
+//     svg.append("g")
+//       .attr("transform", `translate(0, ${height})`)
+//       .call(d3.axisBottom(x).tickSizeOuter(0));
+
+//     // Add Y axis
+//     const y = d3.scaleLinear()
+//       .domain([0, 60])
+//       .range([height, 0]);
+//     svg.append("g")
+//       .call(d3.axisLeft(y));
+
+//     // color palette = one color per subgroup
+//     const color = d3.scaleOrdinal()
+//       .domain(subgroups)
+//       .range(['#e41a1c', '#377eb8', '#4daf4a'])
+
+//     //stack the data? --> stack per subgroup
+//     const stackedData = d3.stack()
+//       .keys(subgroups)
+//       (dataStacked)
+
+//     // Show the bars
+//     svg.append("g")
+//       .selectAll("g")
+//       // Enter in the stack data = loop key per key = group per group
+//       .data(stackedData)
+//       .join("g")
+//       .attr("fill", d => color(d.key))
+//       .selectAll("rect")
+//       // enter a second time = loop subgroup per subgroup to add all rectangles
+//       .data(d => d)
+//       .join("rect")
+//       .attr("x", d => x(d.dataStacked.chain))
+//       .attr("y", d => y(d[1]))
+//       .attr("height", d => y(d[0]) - y(d[1]))
+//       .attr("width", x.bandwidth())
+//   }
+// stacked(dataStacked);
+// }
 function d3Stacked(starterMons) {
-  const margin = {
-      top: 10,
-      right: 30,
-      bottom: 20,
-      left: 50
-    },
-    width = 460 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+  var margin = {
+    top: 20,
+    right: 160,
+    bottom: 35,
+    left: 30
+  };
 
-  // append the svg object to the body of the page
-  const svg = d3.select("#stackedBar")
+  var width = 960 - margin.left - margin.right;
+  var height = 500 - margin.top - margin.bottom;
+
+  var svg = d3.select(".stackedBar")
+    .append("svg")
     .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom);
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  const g = svg.append("g")
-    .attr("transform", `translate(${margin.left},${margin.top})`);
 
-  // Parse the Data
-  let dataStacked = starterMons;
+  /* Data in strings like it would be if imported from a csv */
 
-  function stacked(dataStacked) {
+  var data = starterMons;
 
-    // List of subgroups = header of the csv files = soil condition here
-    console.log(dataStacked)
-    const subgroups = dataStacked.slice(1)
+  // Transpose the data into layers
+  var dataset = ["grass", "fire", "water"].map(typeName =>data.filter(p => p.type === typeName));
+                      
+  
+  console.log(dataset);
+  // debugger;
+  // console.log(dataset[0]);
+  // Set x, y and colors
+  var x = d3.scaleOrdinal()
+    .domain(dataset[0].map(function (d) {
+      return d.xas;
+    }))
+    .rangeRound([10, width - 10])
+    .padding(0.02);
 
-    // List of groups = species here = value of the first column called group -> I show them on the X axis
-    const groups = dataStacked.map(d => (d.chain))
+  var y = d3.scaleLinear()
+    .domain([0, d3.max(dataset, function (d) {
+      return d3.max(d, function (d) {
+        return d.yas0 + d.yas;
+      });
+    })])
+    .range([height, 0]);
 
-    // Add X axis
-    const x = d3.scaleBand()
-      .domain(groups)
-      .range([0, width])
-      .padding([0.2])
-    svg.append("g")
-      .attr("transform", `translate(0, ${height})`)
-      .call(d3.axisBottom(x).tickSizeOuter(0));
+  var colors = ["b33040", "#d25c4d", "#f2b447", "#d9d574"];
 
-    // Add Y axis
-    const y = d3.scaleLinear()
-      .domain([0, 60])
-      .range([height, 0]);
-    svg.append("g")
-      .call(d3.axisLeft(y));
 
-    // color palette = one color per subgroup
-    const color = d3.scaleOrdinal()
-      .domain(subgroups)
-      .range(['#e41a1c', '#377eb8', '#4daf4a'])
+  // Define and draw axes
+  var yAxis = d3.axisLeft()
+    .scale(y)
+    .orient("left")
+    .ticks(5)
+    .tickSize(-width, 0, 0)
+    .tickFormat(function (d) {
+      return d
+    });
 
-    //stack the data? --> stack per subgroup
-    const stackedData = d3.stack()
-      .keys(subgroups)
-      (dataStacked)
+  var xAxis = d3.axisBottom()
+    .scale(x)
+    .orient("bottom")
+    .tickFormat(d3.time.format("%Y"));
 
-    // Show the bars
-    svg.append("g")
-      .selectAll("g")
-      // Enter in the stack data = loop key per key = group per group
-      .data(stackedData)
-      .join("g")
-      .attr("fill", d => color(d.key))
-      .selectAll("rect")
-      // enter a second time = loop subgroup per subgroup to add all rectangles
-      .data(d => d)
-      .join("rect")
-      .attr("x", d => x(d.dataStacked.chain))
-      .attr("y", d => y(d[1]))
-      .attr("height", d => y(d[0]) - y(d[1]))
-      .attr("width", x.bandwidth())
-  }
-stacked(dataStacked);
+  svg.append("g")
+    .attr("class", "y axis")
+    .call(yAxis);
+
+  svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(xAxis);
+
+
+  // Create groups for each series, rects for each segment 
+  var groups = svg.selectAll("g.cost")
+    .data(dataset)
+    .enter().append("g")
+    .attr("class", "cost")
+    .style("fill", function (d, i) {
+      return colors[i];
+    });
+
+  var rect = groups.selectAll("rect")
+    .data(function (d) {
+      return d;
+    })
+    .enter()
+    .append("rect")
+    .attr("x", function (d) {
+      return x(d.x);
+    })
+    .attr("y", function (d) {
+      return y(d.y0 + d.y);
+    })
+    .attr("height", function (d) {
+      return y(d.y0) - y(d.y0 + d.y);
+    })
+    .attr("width", x.rangeBand())
+    .on("mouseover", function () {
+      tooltip.style("display", null);
+    })
+    .on("mouseout", function () {
+      tooltip.style("display", "none");
+    })
+    .on("mousemove", function (d) {
+      var xPosition = d3.mouse(this)[0] - 15;
+      var yPosition = d3.mouse(this)[1] - 25;
+      tooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
+      tooltip.select("text").text(d.y);
+    });
+
+
+  // Draw legend
+  var legend = svg.selectAll(".legend")
+    .data(colors)
+    .enter().append("g")
+    .attr("class", "legend")
+    .attr("transform", function (d, i) {
+      return "translate(30," + i * 19 + ")";
+    });
+
+  legend.append("rect")
+    .attr("x", width - 18)
+    .attr("width", 18)
+    .attr("height", 18)
+    .style("fill", function (d, i) {
+      return colors.slice().reverse()[i];
+    });
+
+  legend.append("text")
+    .attr("x", width + 5)
+    .attr("y", 9)
+    .attr("dy", ".35em")
+    .style("text-anchor", "start")
+    .text(function (d, i) {
+      switch (i) {
+        case 0:
+          return "Anjou pears";
+        case 1:
+          return "Naval oranges";
+        case 2:
+          return "McIntosh apples";
+        case 3:
+          return "Red Delicious apples";
+      }
+    });
+
+
+  // Prep the tooltip bits, initial display is hidden
+  var tooltip = svg.append("g")
+    .attr("class", "tooltip")
+    .style("display", "none");
+
+  tooltip.append("rect")
+    .attr("width", 30)
+    .attr("height", 20)
+    .attr("fill", "white")
+    .style("opacity", 0.5);
+
+  tooltip.append("text")
+    .attr("x", 15)
+    .attr("dy", "1.2em")
+    .style("text-anchor", "middle")
+    .attr("font-size", "12px")
+    .attr("font-weight", "bold");
+
 }

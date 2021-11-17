@@ -49,3 +49,24 @@ body{
 	text-align: center;
     border: 1px solid black;
 }
+
+
+
+.stackedBar {
+    font: 10px sans-serif;
+    shape-rendering: crispEdges;
+  }
+
+  .stackedBar .axis path,
+  .stackedBar .axis line {
+    fill: none;
+    stroke: #000;
+  }
+ 
+  .stackedBar path.domain {
+    stroke: none;
+  }
+ 
+  .stackedBar .y .tick line {
+    stroke: #ddd;
+  }
