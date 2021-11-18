@@ -2,14 +2,6 @@ body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* .bar {
-    height: 21px;
-    transition: fill .3s ease;
-    cursor: pointer;
-    font-family: Helvetica, sans-serif;
-    padding-top: 20px;
-} */
-
 
 #legenda #legendaTitel {
     font-weight: bold;
@@ -61,12 +53,4 @@ body{
   .stackedBar .axis line {
     fill: none;
     stroke: #000;
-  }
- 
-  .stackedBar path.domain {
-    stroke: none;
-  }
- 
-  .stackedBar .y .tick line {
-    stroke: #ddd;
   }
