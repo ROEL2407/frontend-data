@@ -24,7 +24,7 @@ git clone https://github.com/ROEL2407/Funcfrontend-data.git
 ```
 ## Rubric
 For this assignment I'm being rated on the folllowing points:
-<img src="https://github.com/ROEL2407/frontend-data/blob/main/images/rubric2.PNG">
+<img src="https://github.com/ROEL2407/frontend-data/blob/main/images/rubric2.PNG?raw=true">
 
 ## Resources
 ### Credits
